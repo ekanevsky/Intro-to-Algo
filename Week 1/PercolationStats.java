@@ -20,8 +20,8 @@ public class PercolationStats {
                 boolean closed = true;
                 while (closed) {
                     //generate random row/col locations
-                    int row = StdRandom.uniform(n);
-                    int col = StdRandom.uniform(n);
+                    int row = StdRandom.uniform(1, n+1);
+                    int col = StdRandom.uniform(1, n+1);
                     //flip site to open if it's full and exit while loop
                     if (testRun.isFull(row, col)) {
                         testRun.open(row, col);
@@ -61,7 +61,7 @@ public class PercolationStats {
    // test client
     public static void main(String[] args) {
         int size = 100;
-        int tries = 20;
+        int tries = 200;
         //int size = Integer.parseInt(args[0]);
         //int tries = Integer.parseInt(args[1]);
 
