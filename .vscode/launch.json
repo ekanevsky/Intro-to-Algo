@@ -6,6 +6,21 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - PercolationStats",
+            "request": "launch",
+            "mainClass": "PercolationStats",
+            "projectName": "Intro to Algo_3dc140fe",
+            "args": "${command:SpecifyProgramArgs}"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Percolation",
+            "request": "launch",
+            "mainClass": "Percolation",
+            "projectName": "Intro to Algo_3dc140fe"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Percolation",
             "request": "launch",
             "mainClass": "Percolation",

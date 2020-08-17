@@ -9,9 +9,9 @@ public class PercolationStats {
 
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
+        validation(n, trials);
         tries = trials;
         openSites = new double[trials];
-        if (n <= 0 || trials <= 0) throw new IllegalArgumentException();
         for (int i = 0; i <= trials-1; i++) {
             Percolation testRun = new Percolation(n);
             // test if percolates is true then opens a site if it's not
@@ -46,13 +46,20 @@ public class PercolationStats {
         return mean() + D*(stddev() / Math.sqrt(tries));
     }
 
+    private static void validation(int size, int tries){
+        if (size <= 0 || tries <= 0) throw new IllegalArgumentException();
+    }
+
    // test client
     public static void main(String[] args) {
         int size = Integer.parseInt(args[0]);
         int tries = Integer.parseInt(args[1]);
+        validation(size, tries);
         PercolationStats perc = new PercolationStats(size, tries);
         System.out.println("mean                    = " + perc.mean());
         System.out.println("stddev                  = " + perc.stddev());
         System.out.println("95% confidence interval = [" + perc.confidenceLo() + ", " + perc.confidenceHi() + "]");
     }
+
+    
 }
