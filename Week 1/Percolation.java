@@ -5,7 +5,7 @@ public class Percolation {
     private boolean[][] siteIsOpen; //tracks if site is open
     private int[][] root; //keeps a list of unique identifiers that can be referenced to siteIsOpen
     private int openSites; 
-    private int gridMax = 0; //grid max size from arg n in Percolation
+    private int gridMax; //grid max size from arg n in Percolation
     WeightedQuickUnionUF unions;
 
     // creates n-by-n grid, with all sites initially blocked
@@ -33,6 +33,7 @@ public class Percolation {
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
         if (row < 1 || row > gridMax || col < 1 || col > gridMax) throw new IllegalArgumentException();
+        if (isOpen(row, col)) return;
         siteIsOpen[row][col] = true;
         openSites++;
         //check if neighboring sites are open and merges their sets if they are

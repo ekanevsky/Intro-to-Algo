@@ -4,7 +4,6 @@ import edu.princeton.cs.algs4.StdStats;
 public class PercolationStats {
     
     private double[] openSites;
-    
 
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
@@ -14,17 +13,10 @@ public class PercolationStats {
             Percolation testRun = new Percolation(n);
             //test if percolates is true then opens a site if it's not
             while (!testRun.percolates()) {
-                boolean closed = true;
-                while (closed) {
-                    //generate random row/col locations
-                    int row = StdRandom.uniform(1, n+1);
-                    int col = StdRandom.uniform(1, n+1);
-                    //flip site to open if it's full and exit while loop
-                    if (testRun.isFull(row, col)) {
-                        testRun.open(row, col);
-                        closed = false;
-                    }
-                }
+                //generate random row/col locations and attempts to open them
+                int row = StdRandom.uniform(1, n+1);
+                int col = StdRandom.uniform(1, n+1);
+                testRun.open(row, col);
             }
             openSites[i] = (double)testRun.numberOfOpenSites()/(n*n);
         }
