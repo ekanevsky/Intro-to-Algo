@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Percolation",
+            "request": "launch",
+            "mainClass": "Percolation",
+            "projectName": "Intro-to-Algo_de6a8e87"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}",
