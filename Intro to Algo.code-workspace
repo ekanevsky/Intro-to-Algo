@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.dependency.syncWithFolderExplorer": false,
+		"java.project.referencedLibraries": [
+			"lib/**/*.jar",
+			"Week 1/lib/algs4.jar"
+		]
+	}
+}

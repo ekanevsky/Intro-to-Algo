@@ -37,22 +37,10 @@ public class Percolation {
         openSites++;
         //check if neighboring sites are open and merges their sets if they are
         //edge cases are filtered out to avoid checking out of bounds sites
-        if (row > 1) {
-            if (siteIsOpen[row-1][col])
-                unions.union(root[row][col], root[row-1][col]);
-        }
-        if (row != gridMax) {
-            if (siteIsOpen[row+1][col])
-               unions.union(root[row][col], root[row+1][col]);
-        }
-        if (col > 1) {
-            if (siteIsOpen[row][col-1])
-              unions.union(root[row][col], root[row][col-1]);
-        }
-        if (col != gridMax) {
-            if (siteIsOpen[row][col+1])
-                unions.union(root[row][col], root[row][col+1]);
-        }
+        if (row > 1 && siteIsOpen[row-1][col]) unions.union(root[row][col], root[row-1][col]);
+        if (row != gridMax && siteIsOpen[row+1][col]) unions.union(root[row][col], root[row+1][col]);
+        if (col > 1 && siteIsOpen[row][col-1]) unions.union(root[row][col], root[row][col-1]);
+        if (col != gridMax && siteIsOpen[row][col+1]) unions.union(root[row][col], root[row][col+1]);
     }
 
     // is the site (row, col) open?
@@ -64,10 +52,7 @@ public class Percolation {
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
         if (row < 1 || row > gridMax || col < 1 || col > gridMax) throw new IllegalArgumentException();
-        if (!siteIsOpen[row][col]) {
-            return true;
-        }
-        return false;
+        return (!siteIsOpen[row][col]);
     }
 
     // returns the number of open sites
@@ -77,9 +62,6 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        if (unions.find(0) == unions.find(1)) {
-            return true;
-        }
-        return false;
+        return (unions.find(0) == unions.find(1));
     }
 }
